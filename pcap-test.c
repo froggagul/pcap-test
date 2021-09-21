@@ -97,8 +97,7 @@ bool parse(Param* param, int argc, char* argv[]) {
 }
 
 int main(int argc, char* argv[]) {
-	if (!parse(&param, argc, argv))
-		return -1;
+	if (!parse(&param, argc, argv)) return -1;
 
 	char errbuf[PCAP_ERRBUF_SIZE];
 	pcap_t* pcap = pcap_open_live(param.dev_, BUFSIZ, 1, 1000, errbuf);
@@ -140,7 +139,6 @@ int main(int argc, char* argv[]) {
 		uint8_t packet_data_offset = sizeof(struct libnet_ethernet_hdr) + (ipv4_header->ip_hl << 2) + (tcp_header->th_off << 2);
 
 		uint8_t packet_data_length = ntohs(ipv4_header->ip_len) - (ipv4_header->ip_hl << 2) - (tcp_header->th_off << 2);
-
 
 		print_eth_info(ethernet_header);
 		print_ip_info(ipv4_header);
