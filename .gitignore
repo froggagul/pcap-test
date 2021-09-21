@@ -3,3 +3,4 @@
 *.user
 Makefile
 pcap-test
+.vscode
